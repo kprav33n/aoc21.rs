@@ -21,6 +21,13 @@ fn main() {
             )
         ),
 
+        "day01b" => println!(
+            "{}",
+            aoc21::day01::num_larger_measurement_windows(
+                aoc21::utils::lines_as_i64_vec(&input).as_slice()
+            )
+        ),
+
         _ => println!("{}: unknown command", command),
     }
 }
