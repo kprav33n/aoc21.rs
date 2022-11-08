@@ -34,7 +34,7 @@ pub struct Location {
     pub depth: i64,
 }
 
-/// TBD
+/// Returns the location after running the given commands.
 ///
 /// # Examples
 ///
@@ -56,6 +56,31 @@ pub fn location_after_commands(cs: &[Command]) -> (i64, i64) {
         Command::Up(x) => (h, d - x),
         Command::Down(x) => (h, d + x),
     })
+}
+
+/// Returns the location after running the given commands.
+///
+/// # Examples
+///
+/// ```
+/// use aoc21::day02::{Command, aimed_location_after_commands};
+/// assert_eq!(aimed_location_after_commands(
+///     vec![Command::Forward(5),
+///          Command::Down(5),
+///          Command::Forward(8),
+///          Command::Up(3),
+///          Command::Down(8),
+///          Command::Forward(2)].as_slice()),
+///     (15, 60),
+/// );
+/// ```
+pub fn aimed_location_after_commands(cs: &[Command]) -> (i64, i64) {
+    let (_aim, horizontal, depth) = cs.iter().fold((0, 0, 0), |(a, h, d), c| match c {
+        Command::Forward(x) => (a, h + x, d + x * a),
+        Command::Up(x) => (a - x, h, d),
+        Command::Down(x) => (a + x, h, d),
+    });
+    (horizontal, depth)
 }
 
 /// Splits the given string on line breaks and return a vector of Commands.
