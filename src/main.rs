@@ -28,25 +28,19 @@ fn main() {
             )
         ),
 
-        "day02a" => println!(
-            "{}",
-            {
-                let (h, d) = aoc21::day02::location_after_commands(
-                    aoc21::day02::lines_as_command_vec(&input).as_slice()
-                );
-                h * d
-            }
-        ),
+        "day02a" => println!("{}", {
+            let (h, d) = aoc21::day02::location_after_commands(
+                aoc21::day02::lines_as_command_vec(&input).as_slice(),
+            );
+            h * d
+        }),
 
-        "day02b" => println!(
-            "{}",
-            {
-                let (h, d) = aoc21::day02::aimed_location_after_commands(
-                    aoc21::day02::lines_as_command_vec(&input).as_slice()
-                );
-                h * d
-            }
-        ),
+        "day02b" => println!("{}", {
+            let (h, d) = aoc21::day02::aimed_location_after_commands(
+                aoc21::day02::lines_as_command_vec(&input).as_slice(),
+            );
+            h * d
+        }),
 
         _ => println!("{}: unknown command", command),
     }

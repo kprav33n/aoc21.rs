@@ -93,11 +93,7 @@ pub fn aimed_location_after_commands(cs: &[Command]) -> (i64, i64) {
 /// assert_eq!(lines_as_command_vec("forward 20\nup 15"), vec![Command::Forward(20), Command::Up(15)]);
 /// ```
 pub fn lines_as_command_vec(s: &str) -> Vec<Command> {
-    s.split('\n')
-        .map(|s| s.trim())
-        .filter(|s| !s.is_empty())
-        .map(|s| Command::from_str(s).unwrap())
-        .collect::<Vec<Command>>()
+    super::utils::lines_as_vec(s, |s| Command::from_str(s).unwrap())
 }
 
 #[cfg(test)]
